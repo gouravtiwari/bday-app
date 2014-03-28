@@ -5,7 +5,7 @@ var birthdayWisher = {
    * @type {string}
    * @private
    */
-  searchOnBdayServer: 'https://localhost:3000/api/bdays',
+  searchOnBdayServer: 'http://localhost:1337/bday',
 
   /**
    * Sends an XHR GET request to grab photos of lots and lots of people. The
@@ -29,11 +29,12 @@ var birthdayWisher = {
    * @private
    */
   showBdays: function (e) {
-    var people = e.target.responseXML.querySelectorAll('photo');
+    var people = JSON.parse(e.target.responseText);
     for (var i = 0; i < people.length; i++) {
       var img = document.createElement('img');
       img.src = this.constructBdayURL(people[i]);
-      img.setAttribute('alt', people[i].getAttribute('title'));
+      img.setAttribute('alt', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
+      img.setAttribute('title', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
       document.body.appendChild(img);
     }
   },
@@ -46,7 +47,7 @@ var birthdayWisher = {
    * @private
    */
   constructBdayURL: function (photo) {
-    return "http://localhost:3000/api/bday/"+photo.getAttribute('id')+".jpg";
+    return "http://localhost:1337/images/"+photo.id+".jpg";
   }
 };
 
