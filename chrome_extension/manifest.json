@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "B'day App!",
+  "description": "This extension shows b'days of folks in ODC",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "https://secure.flickr.com/"
+  ]
+}
