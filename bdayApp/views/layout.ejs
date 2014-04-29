@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <!--
         For demonstration purposes, the `title` is dynamically set here based on
@@ -35,7 +35,7 @@
 
   </head>
 
-  <body>
+  <body ng-controller="BdayController">
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
@@ -57,7 +57,11 @@
     <script type="text/javascript" src="/js/sails.io.js"></script>
     <!-- listen on socket.io for incoming messages -->
     <script type="text/javascript" src="/js/app.js"></script>
-
+    <script type="text/javascript" src="/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/js/angular/app.js"></script>
+    <script type="text/javascript" src="/js/angular/BdayController.js"></script>
+    <script type="text/javascript" src="/js/angular/BdayService.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
