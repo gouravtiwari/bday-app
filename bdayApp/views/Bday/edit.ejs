@@ -1,0 +1,8 @@
+Edit Bday:
+<form method="post" action="/bday/update">
+  Name: <input type="text" name="name" value="<%= bday.name %>">
+  Day: <input type="text" name="day" value="<%= bday.day %>">
+  Month: <input type="text" name="month" value="<%= bday.month %>">
+  <input type="hidden" name="id" value="<%= bday.id %>">
+  <input type="submit" value="Submit">
+</form> 

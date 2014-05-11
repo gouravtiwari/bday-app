@@ -77,7 +77,46 @@ module.exports = {
         }
     },
 
+  edit: function(req, res) {
+    console.log('in edit');
+    Bday.findById( req.param('id') )
+      .done(function(err, bday) {
+        if (err) {
+          return res.send(err, 500);
+        } else {
+          if (bday.length > 0) {
+            console.log(bday);
+            res.view({'bday': bday[0]});
+          } else {
+            res.send('bdayer not found', 500);
+          }
+        }
+      });
+  },
 
+  update: function(req, res) {
+    Bday.findById( req.param('id') )
+      .done(function(err, bdayer) {
+        if (err) {
+          return res.send(err, 500);
+        } else {
+          if (bdayer.length > 0) {
+            bdayer[0].name = req.param('name');
+            bdayer[0].day = req.param('day');
+            bdayer[0].month = req.param('month');
+            // save the updated value
+            bdayer[0].save(function(err) {
+              // value has been saved
+              console.log('bdayer saved successfully');
+              console.log(bdayer[0]);
+              res.redirect('/');
+            });
+          } else {
+            res.send('bdayer not found', 500);
+          }
+        }
+      });
+  },
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to BdayController)

@@ -1,6 +1,6 @@
 
 List of bdays-
 <div ng-repeat="bday in bdays">
-  <h3>Name {{bday.name}} | Date {{bday.day}}/{{bday.month}} | <a href="#">Edit</a></h3>
+  <h3>Name {{bday.name}} | Date {{bday.day}}/{{bday.month}} | <a href="/bday/edit/{{bday.id}}">Edit</a><img src="images/{{bday.name.toLowerCase().replace(' ', '-')}}.jpg"/></h3>
   </br>
 </div>
