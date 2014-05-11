@@ -22,14 +22,55 @@ module.exports = {
         if (req.method === 'POST') {           
             // read temporary file
             fs.readFile(req.files.testFile.path, function (err, data) {
-                // save file
-                var newPath = req.files.testFile.name;
-                fs.writeFile(newPath, data, function (err) {
-                    if (err) res.view({err: err});
-                    // redirect to next page
-                    res.redirect('/');
-                });
+              if(err) throw err;
+              var array = data.toString().split("\n");
+              for(i in array) {
+                  console.log(array[i]);
+                  var bdayRecord = array[i];
+                  if(bdayRecord.trim() !== ''){
+                      var day = array[i].split(',')[1].split('/')[0].trim(),
+                          month = array[i].split(',')[1].split('/')[1].trim(),
+                          name = array[i].split(',')[0].trim();
+                      Bday.find({
+                        name: name,
+                        month: month,
+                        day: day
+                      }).done(function(err, bdayers) {
+                        // Error handling
+                        if (err) {
+                          return console.log(err);
+                        } else {
+                          // Not found, now create
+                          if(bdayers.length == 0){
+                            Bday.create({
+                              day: day,
+                              month: month,
+                              name: name
+                            }).done(function(err, user) {
 
+                              // Error handling
+                              if (err) {
+                                return console.log(err);
+
+                              // The User was created successfully!
+                              }else {
+                                console.log("User created:", user);
+                              }
+                            });
+                          } else{
+                            // The BDayers were found successfully!
+                            console.log('User '+name+' exists');
+                          }
+                          // for(bdayerIndex in bdayers){
+                          //   console.log(bdayers[bdayerIndex]);
+                          //   Bday.destroy(bdayers[bdayerIndex].id);  
+                          // }
+                        }
+                      });
+                  }
+              }
+              res.redirect('/');
+              return true;
             });
         } else {
             res.view();
