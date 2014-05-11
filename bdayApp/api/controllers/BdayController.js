@@ -14,10 +14,27 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
+var fs    = require("fs");
 
 module.exports = {
     
-  
+  uploadFile : function(req, res) {
+        if (req.method === 'POST') {           
+            // read temporary file
+            fs.readFile(req.files.testFile.path, function (err, data) {
+                // save file
+                var newPath = req.files.testFile.name;
+                fs.writeFile(newPath, data, function (err) {
+                    if (err) res.view({err: err});
+                    // redirect to next page
+                    res.redirect('/');
+                });
+
+            });
+        } else {
+            res.view();
+        }
+    },
 
 
   /**
