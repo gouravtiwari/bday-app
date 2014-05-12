@@ -1,6 +1,12 @@
-
-List of bdays-
+<h2>Birthdays</h2>
 <div ng-repeat="bday in bdays">
-  <h3>Name {{bday.name}} | Date {{bday.day}}/{{bday.month}} | <a href="/bday/edit/{{bday.id}}">Edit</a><img src="images/{{bday.name.toLowerCase().replace(' ', '-')}}.jpg"/></h3>
+
+  <h4>
+    <object data="images/{{bday.name.toLowerCase().replace(' ', '-')}}.jpg" width="75px" height="75px" type="image/png" class="pull-left">
+      <img src="images/default.jpg" width="75px" height="75px" class="pull-left"/>
+    </object>
+    &nbsp;&nbsp;&nbsp;{{bday.name}} on {{bday.day}}/{{bday.month}} <a href="/bday/edit/{{bday.id}}"><span class="glyphicon glyphicon-edit"></span></a>
+  </h4>
+  <div style="clear:both;"></div>
   </br>
 </div>

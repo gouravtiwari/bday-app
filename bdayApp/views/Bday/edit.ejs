@@ -1,8 +1,13 @@
-Edit Bday:
+<h2>Edit Bday</h2>
 <form method="post" action="/bday/update">
-  Name: <input type="text" name="name" value="<%= bday.name %>">
-  Day: <input type="text" name="day" value="<%= bday.day %>">
-  Month: <input type="text" name="month" value="<%= bday.month %>">
-  <input type="hidden" name="id" value="<%= bday.id %>">
-  <input type="submit" value="Submit">
+  <div class="input-group">
+    <label>Name: </label>
+    <input type="text" name="name" value="<%= bday.name %>" class="form-control"><br><br>
+    <label>Day: </label>
+    <input type="text" name="day" value="<%= bday.day %>"  class="form-control"><br><br>
+    <label>Month: </label>
+    <input type="text" name="month" value="<%= bday.month %>"  class="form-control"><br><br>
+    <input type="hidden" name="id" value="<%= bday.id %>"><br>
+  </div>  
+  <input type="submit" value="Submit" class="btn btn-primary">
 </form> 
