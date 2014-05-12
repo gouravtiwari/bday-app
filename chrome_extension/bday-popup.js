@@ -31,12 +31,27 @@ var birthdayWisher = {
   showBdays: function (e) {
     var people = JSON.parse(e.target.responseText);
     for (var i = 0; i < people.length; i++) {
-      var img = document.createElement('img');
-      img.src = this.constructBdayURL(people[i]);
-      img.setAttribute('alt', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
-      img.setAttribute('title', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
-      document.body.appendChild(img);
+      var defaultImage = document.createElement('img');
+      defaultImage.src = this.constructDefaultImageURL();
+
+      var imgObject = document.createElement('object');
+      imgObject.data = this.constructBdayURL(people[i]);
+      imgObject.setAttribute('alt', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
+      imgObject.setAttribute('title', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
+      imgObject.setAttribute('type', "image/jpg");
+
+      document.body.appendChild(imgObject).appendChild(defaultImage);
     }
+  },
+
+  /**
+   * construct a default Image URL using the method outlined at
+   *
+   * @return {string} The person's default image URL.
+   * @private
+   */
+  constructDefaultImageURL: function () {
+    return "http://localhost:1337/images/default.jpg";
   },
 
   /**
