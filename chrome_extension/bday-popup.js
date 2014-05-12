@@ -1,11 +1,12 @@
 // var QUERY = 'birthday';
-
+var date = new Date();
+var currentMonth = date.getMonth() + 1;
 var birthdayWisher = {
   /**
    * @type {string}
    * @private
    */
-  searchOnBdayServer: 'http://localhost:1337/bday',
+  searchOnBdayServer: 'http://localhost:1337/bday?month='+currentMonth,
 
   /**
    * Sends an XHR GET request to grab photos of lots and lots of people. The
