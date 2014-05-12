@@ -28,8 +28,8 @@ module.exports = {
                   console.log(array[i]);
                   var bdayRecord = array[i];
                   if(bdayRecord.trim() !== ''){
-                      var day = array[i].split(',')[1].split('/')[0].trim(),
-                          month = array[i].split(',')[1].split('/')[1].trim(),
+                      var day = parseInt(array[i].split(',')[1].split('/')[0].trim()),
+                          month = parseInt(array[i].split(',')[1].split('/')[1].trim()),
                           name = array[i].split(',')[0].trim();
                       Bday.find({
                         name: name,
@@ -102,8 +102,8 @@ module.exports = {
         } else {
           if (bdayer.length > 0) {
             bdayer[0].name = req.param('name');
-            bdayer[0].day = req.param('day');
-            bdayer[0].month = req.param('month');
+            bdayer[0].day = parseInt(req.param('day'));
+            bdayer[0].month = parseInt(req.param('month'));
             // save the updated value
             bdayer[0].save(function(err) {
               // value has been saved
