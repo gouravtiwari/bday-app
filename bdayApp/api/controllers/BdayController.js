@@ -117,6 +117,23 @@ module.exports = {
         }
       });
   },
+
+  destroy: function(req, res){
+    console.log('here');
+    Bday.findOneById(req.param('id'))
+      .done(function(err, bdayer){
+        if(err){
+          return res.send(err, 500);
+        } else {
+          console.log('deleting')
+          bdayer.destroy(function(err) {
+            console.log(bdayer);
+          });
+        }
+      });
+    res.redirect('/');
+  },  
+
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to BdayController)

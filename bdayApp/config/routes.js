@@ -43,6 +43,11 @@ module.exports.routes = {
   'post /uploadFile': {
     controller: 'BdayController',
     action: 'uploadFile'
+  },
+
+  'delete /bday/destroy':{
+    controller: 'BdayController',
+    action: 'destroy'
   }
 
   /*
