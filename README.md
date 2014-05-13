@@ -13,10 +13,11 @@ Playing with chrome extension, SailsJS, NodeJS and AngularJS
     $ npm install
     $ sails lift
 
-SailsJS app:
+#### SailsJS app:
 Launch http://localhost:1337
 
-Chrome extension:
+#### Chrome extension:
+
 1. Open chrome://extensions
 2. Click on 'Pack extension'
 3. Give path to bday-app/chrome_extension, leve key blank, this will create chrome_extension.crx file
