@@ -2,9 +2,8 @@
 <div ng-repeat="bday in bdays">
 
   <h4>
-    <object data="images/{{bday.name.toLowerCase().replace(' ', '-')}}.jpg" width="75px" height="75px" type="image/jpg" class="pull-left">
-      <img src="images/default.jpg" width="75px" height="75px" class="pull-left"/>
-    </object>
+    <img ng-src="images/{{bday.imageName}}" width="75px" height="75px" class="pull-left" ng-if="bday.imageName">
+    <img ng-src="images/default.jpg" width="75px" height="75px" class="pull-left" ng-if="!bday.imageName">
     &nbsp;&nbsp;&nbsp;{{bday.name}} on {{bday.day}}/{{bday.month}} <a href="/bday/edit/{{bday.id}}"><span class="glyphicon glyphicon-edit"></span></a> <a href="/bday/destroy/{{bday.id}}"><span class="glyphicon glyphicon-remove red"></span></a>
   </h4>
   <div style="clear:both;"></div>

@@ -101,16 +101,42 @@ module.exports = {
           return res.send(err, 500);
         } else {
           if (bdayer.length > 0) {
-            bdayer[0].name = req.param('name');
-            bdayer[0].day = parseInt(req.param('day'));
-            bdayer[0].month = parseInt(req.param('month'));
-            // save the updated value
-            bdayer[0].save(function(err) {
-              // value has been saved
-              console.log('bdayer saved successfully');
-              console.log(bdayer[0]);
-              res.redirect('/');
-            });
+            if(req.files.image.name != '') {
+              //console.log(req.files.image);
+              console.log('inside if');
+              fs.readFile(req.files.image.path, function (err, data) {
+                var imageName = req.files.image.name             
+                var Path = "./" + "assets/images/" + bdayer[0].id + imageName;
+                fs.writeFile(Path, data, function (err) {
+                  console.log(imageName);
+                  console.log(Path);
+                  console.log(bdayer[0].imageName);
+                });
+              });
+              bdayer[0].imageName = bdayer[0].id + req.files.image.name;
+              bdayer[0].name = req.param('name');
+              bdayer[0].day = parseInt(req.param('day'));
+              bdayer[0].month = parseInt(req.param('month'));
+              // save the updated value
+              bdayer[0].save(function(err) {
+                // value has been saved
+                console.log('bdayer saved successfully');
+                console.log(bdayer[0]);
+                res.redirect('/');
+              });
+            } else {
+              console.log('inside else');
+              bdayer[0].name = req.param('name');
+              bdayer[0].day = parseInt(req.param('day'));
+              bdayer[0].month = parseInt(req.param('month'));
+              // save the updated value
+              bdayer[0].save(function(err) {
+                // value has been saved
+                console.log('bdayer saved successfully');
+                console.log(bdayer[0]);
+                res.redirect('/');
+              });
+            }
           } else {
             res.send('bdayer not found', 500);
           }
