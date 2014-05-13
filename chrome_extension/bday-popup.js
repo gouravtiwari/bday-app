@@ -32,6 +32,11 @@ var birthdayWisher = {
   showBdays: function (e) {
     var people = JSON.parse(e.target.responseText);
     for (var i = 0; i < people.length; i++) {
+      var imageEnclosingDiv = document.createElement('div');
+      imageEnclosingDiv.setAttribute('style', 'float:left');
+      imageEnclosingDiv.setAttribute('class', 'image-name');
+      
+
       var defaultImage = document.createElement('img');
       defaultImage.src = this.constructDefaultImageURL();
 
@@ -41,7 +46,14 @@ var birthdayWisher = {
       imgObject.setAttribute('title', "Happy B'day "+ people[i].name + " " + people[i].day + "/" + people[i].month);
       imgObject.setAttribute('type', "image/jpg");
 
-      document.body.appendChild(imgObject).appendChild(defaultImage);
+      var nameElement = document.createElement('div');
+      var nameTextNode = document.createTextNode(people[i].name.replace(' ', '\n\n'));
+      nameElement.appendChild(nameTextNode);
+
+      imageEnclosingDiv.appendChild(imgObject).appendChild(defaultImage);
+      imageEnclosingDiv.appendChild(nameElement);
+
+      document.body.appendChild(imageEnclosingDiv);
     }
   },
 
