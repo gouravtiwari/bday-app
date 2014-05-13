@@ -63,7 +63,7 @@ var birthdayWisher = {
    * @private
    */
   constructBdayURL: function (photo) {
-    return "http://localhost:1337/images/"+photo.name.toLowerCase().replace(' ', '-')+".jpg";
+    return "http://localhost:1337/images/"+ photo.imageName;
   }
 };
 
