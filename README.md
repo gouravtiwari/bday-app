@@ -24,3 +24,12 @@ Launch http://localhost:1337
 4. Drag and drop this file on chrome://extensions
 5. Click on add extension
 6. Enjoy Chrome extension of BdayApp :sunny:
+
+
+#### But, I am hosting SailsJS application on another host and port!
+
+Simply change bday-app/chrome_extension/manifest.json:
+
+    "permissions": [
+      "http://localhost:1337/" //to something else!
+    ]
