@@ -10,6 +10,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://172.28.228.64:1337/"
+    "http://localhost:1337/"
   ]
 }
