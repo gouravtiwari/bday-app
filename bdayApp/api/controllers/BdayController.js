@@ -78,14 +78,12 @@ module.exports = {
     },
 
   edit: function(req, res) {
-    console.log('in edit');
     Bday.findById( req.param('id') )
       .done(function(err, bday) {
         if (err) {
           return res.send(err, 500);
         } else {
           if (bday.length > 0) {
-            console.log(bday);
             res.view({'bday': bday[0]});
           } else {
             res.send('bdayer not found', 500);
@@ -144,17 +142,16 @@ module.exports = {
       });
   },
 
+  /**
+   * finds and destroy a record
+  */
   destroy: function(req, res){
-    console.log('here');
     Bday.findOneById(req.param('id'))
       .done(function(err, bdayer){
         if(err){
           return res.send(err, 500);
         } else {
-          console.log('deleting')
-          bdayer.destroy(function(err) {
-            console.log(bdayer);
-          });
+          bdayer.destroy(function(err) {console.log(err);});
         }
       });
     res.redirect('/');
