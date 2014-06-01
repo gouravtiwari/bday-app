@@ -40,9 +40,9 @@ module.exports.routes = {
     view: 'Bday/upload'
   },
 
-  'post /uploadFile': {
+  'post /uploadBdayCSVFile': {
     controller: 'BdayController',
-    action: 'uploadFile'
+    action: 'uploadBdayCSVFile'
   },
 
   'delete /bday/destroy':{
